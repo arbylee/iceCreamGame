@@ -1,4 +1,6 @@
-var game = new Phaser.Game(600, 600, Phaser.AUTO, '')
+var GAME_WIDTH = 600;
+var GAME_HEIGHT = 600;
+var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, '');
 function Main() {};
 
 
@@ -39,10 +41,10 @@ Main.prototype = {
   },
   update: function(){
     this.player.body.velocity.x = 0;
-    if(this.cursors.left.isDown){
+    if(this.cursors.left.isDown && this.player.body.x > 0){
       this.player.body.velocity.x -= 250;
     }
-    if(this.cursors.right.isDown){
+    if(this.cursors.right.isDown && this.player.body.x < GAME_WIDTH-this.player.body.width){
       this.player.body.velocity.x += 250;
     }
 
